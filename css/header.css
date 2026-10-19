@@ -1,0 +1,58 @@
+.skip {
+  position: absolute; left: -999px; top: 0;
+  background: var(--ink); color: #fff; padding: .75rem 1rem; z-index: 100;
+}
+.skip:focus { left: 0; }
+
+.topbar { display: none; background: var(--ink); color: #fff; font-size: .875rem; }
+.topbar .container { display: flex; justify-content: space-between; gap: var(--s-4); padding-block: .5rem; }
+.topbar__group { display: flex; flex-wrap: wrap; gap: var(--s-4); }
+.topbar a { color: #fff; text-decoration: none; }
+.topbar a:hover { color: var(--yellow); }
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid rgba(20, 19, 15, .08);
+}
+.site-header .container { display: flex; align-items: stretch; justify-content: space-between; min-height: 68px; }
+
+.brand {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 0 var(--s-4); background: var(--yellow); color: var(--ink);
+  text-decoration: none; line-height: 1;
+}
+.brand strong { font-size: 1.35rem; letter-spacing: .04em; }.brand span { margin-top: 4px; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
+.nav-toggle {
+  align-self: center; background: none; border: 2px solid var(--ink);
+  border-radius: 10px; padding: .5rem .85rem; font: inherit; font-weight: 600; cursor: pointer;
+}
+
+.site-nav {
+  display: none; position: absolute; inset: 100% 0 auto 0;
+  background: var(--paper); border-bottom: 1px solid rgba(20, 19, 15, .08);
+  padding: var(--s-3) 1rem var(--s-4);
+}
+.site-nav[data-open="true"] { display: block; }
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-1); }
+.nav-link { display: block; padding: .75rem .25rem; color: var(--ink); font-weight: 500; text-decoration: none; }
+.nav-link[aria-current="page"] { color: var(--amber-dark); }
+.site-nav .btn { margin-top: var(--s-3); }
+
+@media (min-width: 720px) { .topbar { display: block; } }
+
+@media (min-width: 900px) {
+  .nav-toggle { display: none; }
+  .site-nav, .site-nav[data-open="true"] {
+    position: static; display: flex; align-items: center; gap: var(--s-5);
+    padding: 0; border: 0; background: none;
+  }
+  .site-nav ul { display: flex; gap: var(--s-4); }
+  .nav-link { padding: .5rem 0; }
+  .nav-link:hover { color: var(--amber-dark); }
+  .site-nav .btn { margin: 0; padding: .65rem 1.25rem; }
+}
+
+@media (max-width: 899px) {
+  .site-header .container { width: 100%; padding-right: 1rem; }
+}

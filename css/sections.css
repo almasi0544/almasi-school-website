@@ -1,0 +1,40 @@
+.section { padding-block: var(--s-7); }
+.section--tint { background: var(--sky-soft); }
+.section__head { max-width: 40rem; margin: 0 auto var(--s-6); text-align: center; }
+
+.cards { display: grid; gap: var(--s-4); }
+@media (min-width: 720px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+
+.card {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: var(--s-5) var(--s-4); background: var(--paper);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  transition: transform 200ms ease-out, background-color 200ms ease-out;
+}
+.card__badge {
+  display: grid; place-items: center; width: 72px; height: 72px; margin-bottom: var(--s-4);
+  border-radius: 50%; background: var(--yellow); color: var(--ink);
+  font-weight: 700; font-size: 1.25rem; letter-spacing: .02em;
+  transition: background-color 200ms ease-out, color 200ms ease-out;
+}
+.card__link { margin-top: auto; font-weight: 600; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--yellow); }
+
+@media (hover: hover) {
+  .card:hover { transform: translateY(-4px); background: var(--yellow); }
+  .card:hover p { color: var(--ink); }
+  .card:hover .card__badge { background: var(--ink); color: var(--yellow); }
+  .card:hover .card__link { border-color: var(--ink); }
+}
+
+.features { display: grid; gap: var(--s-5); }
+@media (min-width: 720px) { .features { grid-template-columns: repeat(3, 1fr); gap: var(--s-6); } }
+.feature { border-top: 4px solid var(--yellow); padding-top: var(--s-4); }
+.feature h3 { margin-bottom: var(--s-2); }
+
+.band { background: var(--yellow); padding-block: var(--s-6); }
+.band .container { display: grid; gap: var(--s-4); align-items: center; }
+.band h2, .band p { color: var(--ink); margin-bottom: 0; }
+.band p { margin-top: var(--s-2); }
+.band .btn { background: var(--ink); color: var(--yellow); border-color: var(--ink); justify-self: start; }
+.band .btn:hover { background: #fff; color: var(--ink); border-color: #fff; }
+@media (min-width: 720px) { .band .container { grid-template-columns: 1fr auto; gap: var(--s-6); } }
