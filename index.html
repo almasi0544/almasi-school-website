@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/footer.css">
   <script src="js/main.js" defer></script>
+  <script src="js/hero.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -51,19 +52,71 @@
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <span class="eyebrow">Nursery · Standard 1 · Standard 2</span>
-          <h1>Small classes. <em>Big care.</em> A&nbsp;strong&nbsp;start.</h1>          <p class="hero__lead">We help young children learn, play and grow with confidence, one class at a time.</p>
-          <div class="hero__actions">
-            <a class="btn" href="admissions.html">Apply now</a>
-            <a class="btn btn--ghost" href="about.html">Learn about us</a>
+        <section class="hero" aria-roledescription="carousel" aria-label="Highlights">
+      <div class="hero__slides" aria-live="off">
+
+        <article class="slide slide--1 is-active" aria-roledescription="slide" aria-label="1 of 3">
+          <div class="container hero__grid">
+            <div class="hero__copy">
+              <span class="eyebrow">Nursery · Standard 1 · Standard 2</span>
+              <h1 class="hero__title">Small classes. <em>Big care.</em> A&nbsp;strong&nbsp;start.</h1>
+              <p class="hero__lead">We help young children learn, play and grow with confidence, one class at a time.</p>
+              <div class="hero__actions">
+                <a class="btn" href="admissions.html">Apply now</a>
+                <a class="btn btn--ghost" href="about.html">Learn about us</a>
+              </div>
+            </div>
+            <div class="hero__photo">
+              <img src="img/hero.jpg" width="440" height="863" style="object-position: 50% 15%" alt="Pupils sitting together on a swing in the school playground">
+            </div>
           </div>
+        </article>
+
+        <article class="slide slide--2" aria-roledescription="slide" aria-label="2 of 3">
+          <div class="container hero__grid">
+            <div class="hero__copy">
+              <span class="eyebrow">Admissions</span>
+              <h2 class="hero__title">New pupils are <em>welcome</em>.</h2>
+              <p class="hero__lead">Registration is free. Next term starts on 5 January 2027.</p>
+              <div class="hero__actions">
+                <a class="btn" href="admissions.html">How to apply</a>
+                <a class="btn btn--ghost" href="contact.html">Contact us</a>
+              </div>
+            </div>
+            <div class="hero__photo">
+              <img src="img/gallery/pupil-uniform.jpg" width="960" height="1280" style="object-position: 50% 20%" alt="A pupil in the yellow and black Almasi school uniform">
+            </div>
+          </div>
+        </article>
+
+        <article class="slide slide--3" aria-roledescription="slide" aria-label="3 of 3">
+          <div class="container hero__grid">
+            <div class="hero__copy">
+              <span class="eyebrow">Safe and caring</span>
+              <h2 class="hero__title">A safe place to <em>play and learn</em></h2>
+              <p class="hero__lead">A fenced playground with swings and play equipment, and teachers who know every child.</p>
+              <div class="hero__actions">
+                <a class="btn" href="gallery.html">See our gallery</a>
+                <a class="btn btn--ghost" href="contact.html">Visit us</a>
+              </div>
+            </div>
+            <div class="hero__photo">
+              <img src="img/gallery/two-pupils.jpg" width="590" height="1080" style="object-position: 50% 22%" alt="Two pupils in school uniform holding hands">
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="hero__controls">
+        <button class="hero__arrow hero__prev" type="button" aria-label="Previous slide">&larr;</button>
+        <div class="hero__dots">
+          <button class="hero__dot" type="button" aria-label="Go to slide 1" aria-current="true"></button>
+          <button class="hero__dot" type="button" aria-label="Go to slide 2"></button>
+          <button class="hero__dot" type="button" aria-label="Go to slide 3"></button>
         </div>
-        <div class="hero__photo">
-          <img src="img/hero.jpg" width="440" height="863" alt="Almasi pupils playing together on a swing in the school playground">
-        </div>
+        <button class="hero__arrow hero__next" type="button" aria-label="Next slide">&rarr;</button>
+        <button class="hero__pause" type="button" aria-label="Pause slideshow" aria-pressed="false"></button>
       </div>
     </section>
 

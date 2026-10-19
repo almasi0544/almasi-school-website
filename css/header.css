@@ -56,3 +56,26 @@
 @media (max-width: 899px) {
   .site-header .container { width: 100%; padding-right: 1rem; }
 }
+
+.lang {
+  display: flex; align-self: center; gap: 2px; padding: 3px;
+  margin-left: auto; margin-right: var(--s-2);
+  border: 2px solid var(--ink); border-radius: var(--radius-pill);
+}
+.lang button {
+  border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--ink);
+  font: inherit; font-size: .75rem; font-weight: 700; letter-spacing: .06em;
+  padding: .3rem .55rem; cursor: pointer;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--yellow); }
+
+@media (max-width: 480px) {
+  .brand { padding: 0 .75rem; }
+  .brand strong { font-size: 1.2rem; }
+  .nav-toggle { padding: .45rem .7rem; }
+}
+@media (min-width: 900px) {
+  .lang { order: 3; margin-left: var(--s-4); margin-right: 0; }
+  .site-nav { order: 2; margin-left: auto; }
+}
