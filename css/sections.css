@@ -38,3 +38,21 @@
 .band .btn { background: var(--ink); color: var(--yellow); border-color: var(--ink); justify-self: start; }
 .band .btn:hover { background: #fff; color: var(--ink); border-color: #fff; }
 @media (min-width: 720px) { .band .container { grid-template-columns: 1fr auto; gap: var(--s-6); } }
+
+.section { padding-block: clamp(2.5rem, 7vw, 5rem); }
+.section__head { margin-bottom: clamp(1.5rem, 4vw, 3rem); }
+.band { padding-block: clamp(1.75rem, 5vw, 3rem); }
+.features { gap: var(--s-4); }
+@media (min-width: 720px) { .features { gap: var(--s-6); } }
+
+@media (max-width: 719px) {
+  .card {
+    display: grid; grid-template-columns: 56px 1fr; column-gap: var(--s-3);
+    align-items: start; text-align: left; padding: var(--s-4);
+  }
+  .card .card__badge { grid-row: 1 / span 3; width: 56px; height: 56px; margin: 0; font-size: 1rem; }
+  .card h3, .card p, .card .card__link { grid-column: 2; }
+  .card h3 { margin-bottom: var(--s-1); }
+  .card p { margin-bottom: var(--s-2); }
+  .card .card__link { justify-self: start; margin-top: 0; }
+}

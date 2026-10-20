@@ -79,3 +79,9 @@
   .lang { order: 3; margin-left: var(--s-4); margin-right: 0; }
   .site-nav { order: 2; margin-left: auto; }
 }
+
+.nav-link { white-space: nowrap; }
+@media (min-width: 900px) and (max-width: 1099px) {
+  .site-nav .btn { display: none; }
+  .site-nav ul { gap: var(--s-3); }
+}

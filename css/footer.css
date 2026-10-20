@@ -35,3 +35,6 @@
   .whatsapp svg { width: 20px; height: 20px; }
   .whatsapp__label { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
 }
+
+.site-footer { padding-top: clamp(2rem, 5vw, 3rem); }
+.footer__legal { margin-top: clamp(1.5rem, 4vw, 3rem); }

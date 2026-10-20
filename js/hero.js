@@ -11,13 +11,23 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const DELAY = 6500;
+  const STORAGE_KEY = 'almasi-hero-index';
+
+  // resume on the slide the visitor last saw
   let index = 0;
+  try {
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    if (saved !== null) index = parseInt(saved, 10) || 0;
+  } catch (e) { /* storage blocked: start at 0 */ }
+
   let timer = null;
   let userPaused = reduceMotion.matches;
-  let hovering = false;
+  let keyboardFocus = false;
 
   function show(i) {
     index = (i + slides.length) % slides.length;
+    try { sessionStorage.setItem(STORAGE_KEY, String(index)); } catch (e) {}
+
     slides.forEach((slide, n) => {
       const active = n === index;
       slide.classList.toggle('is-active', active);
@@ -29,11 +39,17 @@
 
   function schedule() {
     clearTimeout(timer);
-    if (userPaused || hovering || document.hidden) return;
-    timer = setTimeout(() => { show(index + 1); schedule(); }, DELAY);
+    if (userPaused || keyboardFocus || document.hidden) return;
+    timer = setTimeout(() => {
+      show(index + 1);
+      schedule();
+    }, DELAY);
   }
 
-  function goTo(i) { show(i); schedule(); }
+  function goTo(i) {
+    show(i);
+    schedule();
+  }
 
   prev.addEventListener('click', () => goTo(index - 1));
   next.addEventListener('click', () => goTo(index + 1));
@@ -46,11 +62,12 @@
     schedule();
   });
 
-  // pause while a mouse is over the hero or the keyboard is focused inside it
-  root.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hovering = true; schedule(); } });
-  root.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hovering = false; schedule(); } });
-  root.addEventListener('focusin', (e) => { if (e.target.matches(':focus-visible')) { hovering = true; schedule(); } });
-  root.addEventListener('focusout', () => { hovering = false; schedule(); });
+  // pause only while someone is moving through it with the keyboard
+  root.addEventListener('focusin', (e) => {
+    if (e.target.matches(':focus-visible')) { keyboardFocus = true; schedule(); }
+  });
+  root.addEventListener('focusout', () => { keyboardFocus = false; schedule(); });
+
   document.addEventListener('visibilitychange', schedule);
 
   root.addEventListener('keydown', (e) => {
@@ -75,6 +92,6 @@
 
   pause.setAttribute('aria-pressed', String(userPaused));
   live.setAttribute('aria-live', userPaused ? 'polite' : 'off');
-  show(0);
+  show(index);
   schedule();
 })();
