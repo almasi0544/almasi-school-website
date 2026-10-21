@@ -95,3 +95,24 @@
   .slide, .slide::before { transition: none; }
   .slide.is-active::before { transform: none; }
 }
+
+.slide {
+  /* 0 = no shading (photo fully visible), 1 = solid black */
+  --shade-left: .72;   /* behind the text, desktop */
+  --shade-mid: .5;
+  --shade-right: .22;  /* behind the circle photo, desktop */
+  --shade-mobile: .58; /* whole slide on phones */
+}
+
+.slide::after {
+  background: linear-gradient(90deg,
+    rgba(20, 19, 15, var(--shade-left)) 0%,
+    rgba(20, 19, 15, var(--shade-mid)) 55%,
+    rgba(20, 19, 15, var(--shade-right)) 100%);
+}
+
+@media (max-width: 899px) {
+  .slide::after { background: rgba(20, 19, 15, var(--shade-mobile)); }
+}
+
+.hero .eyebrow, .hero__title, .hero__lead { text-shadow: 0 1px 14px rgba(0, 0, 0, .35); }
